@@ -90,8 +90,9 @@ location / {
 ## Configuring SSL Certification with Certbot
 1) `sudo snap install core; sudo snap refresh core`
 2) `sudo apt remove certbot`
-3) Adding certbot to path: `sudo ln -s /snap/bin/certbot /usr/bin/certbot`
-4) `sudo certbot --nginx -d <subdomain>.<domain>.<tld>` 
-5) `sudo systemctl status snap.certbot.renew.service`
-6) `sudo certbot renew --dry-run`
-7) The server should be accessible with HTTPS now!
+3) `sudo snap install --classic certbot`
+4) Adding certbot to path: `sudo ln -s /snap/bin/certbot /usr/bin/certbot`
+5) `sudo certbot --nginx -d <subdomain>.<domain>.<tld>` 
+6) `sudo systemctl status snap.certbot.renew.service`
+7) `sudo certbot renew --dry-run`
+8) The server should be accessible with HTTPS now!
