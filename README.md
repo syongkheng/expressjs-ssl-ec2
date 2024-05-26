@@ -69,7 +69,8 @@
 2) `sudo nano /etc/nginx/sites-available/default`
 3) Add the following to the location {} and server_name
 3.1) `server_name <subdomain>.<domain>.<tld>`
-3.2) ```
+3.2)
+```
 location / {
         proxy_pass http://localhost:3000;
         proxy_http_version 1.1;
