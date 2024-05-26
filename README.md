@@ -48,3 +48,6 @@
 10) Click on "Add SSH Key" (Complete MFA if needed)
 11) You should be able to clone the repository!
 12) `git clone git@github.com:syongkheng/expressjs-ec2-guide.git`
+
+## Accessing the web application
+
