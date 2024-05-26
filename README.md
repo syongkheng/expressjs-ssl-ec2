@@ -80,8 +80,9 @@ location / {
         proxy_cache_bypass $http_upgrade;
     }
 ```
-6) Check the config `sudo nginx -t`
-7) Restart nginx `sudo service nginx restart`
+6) Ensure that you change the default path of /var/www/html to /home/ubuntu/expressjs-ec2-guide
+7) Check the config `sudo nginx -t`
+8) Restart nginx `sudo service nginx restart`
 
 ### Add domain in your domain provider
 1) Add a "A" record that points to the EC2 Instance Public IPV4, the same IP that you use to ssh.
