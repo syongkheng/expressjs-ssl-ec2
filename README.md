@@ -50,4 +50,46 @@
 12) `git clone git@github.com:syongkheng/expressjs-ec2-guide.git`
 
 ## Accessing the web application
+1) Build the typescript files into javscript files
+2) `npm run build`
+3) The web application can be deployed with `npm run dev`
+4) The application should now be accessible at http://<elastic-ip>:3000
+5) This simulates a "dev" envrionment and the terminal running the process has to be kept alive.
+6) Persisting the application with pm2: `npm install pm2`
+7) `pm2 start dist/src/index.js --name=expressjs-server`
+8) `pm2 save`
+9) `pm2 startup # Execute the command as prompted`
+10) The web application should still be accessible even after exiting the terminal
+11) Optional: You can run npm run migration which will create a dev account username: `dev`, password: `secret`
 
+# Optional steps: SSL Certificate with Nginx Reverse Proxy
+
+## Configuring Nginx
+1) `sudo apt install nginx`
+2) `sudo nano /etc/nginx/sites-available/default`
+3) Add the following to the location {} and server_name
+3.1) `server_name <subdomain>.<domain>.<tld>`
+3.2) ```
+location / {
+        proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+```
+4) Check the config `sudo nginx -t`
+5) Restart nginx `sudo service nginx restart`
+
+### Add domain in your domain provider
+1) Add a "A" record that points to the EC2 Instance Public IPV4, the same IP that you use to ssh.
+
+## Configuring SSL Certification with Certbot
+1) `sudo snap install core; sudo snap refresh core`
+2) `sudo apt remove certbot`
+3) Adding certbot to path: `sudo ln -s /snap/bin/certbot /usr/bin/certbot`
+4) `sudo certbot --nginx -d <subdomain>.<domain>.<tld>` 
+5) `sudo systemctl status snap.certbot.renew.service`
+6) `sudo certbot renew --dry-run`
+7) The server should be accessible with HTTPS now!
