@@ -68,8 +68,8 @@
 1) `sudo apt install nginx`
 2) `sudo nano /etc/nginx/sites-available/default`
 3) Add the following to the location {} and server_name
-3.1) `server_name <subdomain>.<domain>.<tld>`
-3.2)
+4) `server_name <subdomain>.<domain>.<tld>`
+5)
 ```
 location / {
         proxy_pass http://localhost:3000;
@@ -80,8 +80,8 @@ location / {
         proxy_cache_bypass $http_upgrade;
     }
 ```
-4) Check the config `sudo nginx -t`
-5) Restart nginx `sudo service nginx restart`
+6) Check the config `sudo nginx -t`
+7) Restart nginx `sudo service nginx restart`
 
 ### Add domain in your domain provider
 1) Add a "A" record that points to the EC2 Instance Public IPV4, the same IP that you use to ssh.
