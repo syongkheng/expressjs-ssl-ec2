@@ -61,6 +61,7 @@
 9) `pm2 startup # Execute the command as prompted`
 10) The web application should still be accessible even after exiting the terminal
 11) Optional: You can run npm run migration which will create a dev account username: `dev`, password: `secret`
+12) If connection doesn't work, please remember to edit inbound rule for port 3000
 
 # Optional steps: SSL Certificate with Nginx Reverse Proxy
 
